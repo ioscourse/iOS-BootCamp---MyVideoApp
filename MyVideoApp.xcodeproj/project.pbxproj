@@ -17,6 +17,7 @@
 		365567041B230EA500D92521 /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365567031B230EA500D92521 /* VideoTableViewController.swift */; };
 		365567061B230FF200D92521 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365567051B230FF200D92521 /* Video.swift */; };
 		365567081B23651400D92521 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365567071B23651400D92521 /* MediaPlayer.framework */; };
+		368776B11B25C7E5009BE17B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368776B01B25C7E5009BE17B /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		365567031B230EA500D92521 /* VideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
 		365567051B230FF200D92521 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		365567071B23651400D92521 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		368776B01B25C7E5009BE17B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				365566E21B230E2200D92521 /* MyVideoApp.xcdatamodeld */,
 				365566DE1B230E2200D92521 /* Supporting Files */,
 				365567031B230EA500D92521 /* VideoTableViewController.swift */,
+				368776B01B25C7E5009BE17B /* MainViewController.swift */,
 			);
 			path = MyVideoApp;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				365566E61B230E2200D92521 /* ViewController.swift in Sources */,
 				365566E11B230E2200D92521 /* AppDelegate.swift in Sources */,
 				365566E41B230E2200D92521 /* MyVideoApp.xcdatamodeld in Sources */,
+				368776B11B25C7E5009BE17B /* MainViewController.swift in Sources */,
 				365567041B230EA500D92521 /* VideoTableViewController.swift in Sources */,
 				365567061B230FF200D92521 /* Video.swift in Sources */,
 			);
@@ -429,6 +433,7 @@
 				365566FF1B230E2200D92521 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		365567001B230E2200D92521 /* Build configuration list for PBXNativeTarget "MyVideoAppTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +442,7 @@
 				365567021B230E2200D92521 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

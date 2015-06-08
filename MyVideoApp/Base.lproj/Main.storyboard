@@ -141,7 +141,7 @@
                     <connections>
                         <outlet property="btnPlay" destination="An9-gX-yGm" id="ZtQ-Ff-jdb"/>
                         <outlet property="btnRecord" destination="eB8-l2-W70" id="Vo9-uG-AAA"/>
-                        <outlet property="btnSave" destination="VAZ-Z2-mao" id="G7e-Lr-eWi"/>
+                        <outlet property="btnSave" destination="VAZ-Z2-mao" id="cpe-aO-i6l"/>
                         <outlet property="txtDate" destination="C01-LF-AXY" id="KRy-PG-466"/>
                         <outlet property="txtName" destination="ZDQ-JN-nKN" id="HHg-W4-3kT"/>
                     </connections>
@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="1266" y="357"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="nkO-gg-fpx">
             <objects>
-                <viewController id="74z-yT-V6o" sceneMemberID="viewController">
+                <viewController id="74z-yT-V6o" customClass="MainViewController" customModule="MyVideoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bst-3e-1tV"/>
                         <viewControllerLayoutGuide type="bottom" id="i0n-Co-uUx"/>
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfR-ie-TqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-527" y="357"/>
+            <point key="canvasLocation" x="-374" y="363"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uaK-vD-yvp">
