@@ -2,8 +2,8 @@
 //  Video.swift
 //  
 //
-//  Created by Charles Konkol on 2015-06-06.
-//
+//  Created by Charles Konkol on 2016-05-06.
+//  Copyright (c) 2015 Rock Valley College. All rights reserved.
 //
 
 import Foundation

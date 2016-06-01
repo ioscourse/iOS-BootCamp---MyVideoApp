@@ -13,22 +13,10 @@
 		365566E91B230E2200D92521 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 365566E71B230E2200D92521 /* Main.storyboard */; };
 		365566EB1B230E2200D92521 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 365566EA1B230E2200D92521 /* Images.xcassets */; };
 		365566EE1B230E2200D92521 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365566EC1B230E2200D92521 /* LaunchScreen.xib */; };
-		365566FA1B230E2200D92521 /* MyVideoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365566F91B230E2200D92521 /* MyVideoAppTests.swift */; };
 		365567041B230EA500D92521 /* VideoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365567031B230EA500D92521 /* VideoTableViewController.swift */; };
 		365567061B230FF200D92521 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365567051B230FF200D92521 /* Video.swift */; };
-		365567081B23651400D92521 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 365567071B23651400D92521 /* MediaPlayer.framework */; };
 		368776B11B25C7E5009BE17B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368776B01B25C7E5009BE17B /* MainViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		365566F41B230E2200D92521 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 365566D31B230E2200D92521 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 365566DA1B230E2200D92521;
-			remoteInfo = MyVideoApp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		365566DB1B230E2200D92521 /* MyVideoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVideoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,25 +27,15 @@
 		365566E81B230E2200D92521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		365566EA1B230E2200D92521 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		365566ED1B230E2200D92521 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		365566F31B230E2200D92521 /* MyVideoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyVideoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		365566F81B230E2200D92521 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		365566F91B230E2200D92521 /* MyVideoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVideoAppTests.swift; sourceTree = "<group>"; };
 		365567031B230EA500D92521 /* VideoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewController.swift; sourceTree = "<group>"; };
 		365567051B230FF200D92521 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
-		365567071B23651400D92521 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		368776B01B25C7E5009BE17B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		365566D81B230E2200D92521 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				365567081B23651400D92521 /* MediaPlayer.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		365566F01B230E2200D92521 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -70,7 +48,6 @@
 		365566D21B230E2200D92521 = {
 			isa = PBXGroup;
 			children = (
-				365567071B23651400D92521 /* MediaPlayer.framework */,
 				365566DD1B230E2200D92521 /* MyVideoApp */,
 				365566F61B230E2200D92521 /* MyVideoAppTests */,
 				365566DC1B230E2200D92521 /* Products */,
@@ -81,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				365566DB1B230E2200D92521 /* MyVideoApp.app */,
-				365566F31B230E2200D92521 /* MyVideoAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,39 +124,19 @@
 			productReference = 365566DB1B230E2200D92521 /* MyVideoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		365566F21B230E2200D92521 /* MyVideoAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 365567001B230E2200D92521 /* Build configuration list for PBXNativeTarget "MyVideoAppTests" */;
-			buildPhases = (
-				365566EF1B230E2200D92521 /* Sources */,
-				365566F01B230E2200D92521 /* Frameworks */,
-				365566F11B230E2200D92521 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				365566F51B230E2200D92521 /* PBXTargetDependency */,
-			);
-			name = MyVideoAppTests;
-			productName = MyVideoAppTests;
-			productReference = 365566F31B230E2200D92521 /* MyVideoAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		365566D31B230E2200D92521 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Rock Valley College";
 				TargetAttributes = {
 					365566DA1B230E2200D92521 = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					365566F21B230E2200D92521 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 365566DA1B230E2200D92521;
 					};
 				};
 			};
@@ -198,7 +154,6 @@
 			projectRoot = "";
 			targets = (
 				365566DA1B230E2200D92521 /* MyVideoApp */,
-				365566F21B230E2200D92521 /* MyVideoAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -211,13 +166,6 @@
 				365566E91B230E2200D92521 /* Main.storyboard in Resources */,
 				365566EE1B230E2200D92521 /* LaunchScreen.xib in Resources */,
 				365566EB1B230E2200D92521 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		365566F11B230E2200D92521 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,23 +185,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		365566EF1B230E2200D92521 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				365566FA1B230E2200D92521 /* MyVideoAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		365566F51B230E2200D92521 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 365566DA1B230E2200D92521 /* MyVideoApp */;
-			targetProxy = 365566F41B230E2200D92521 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		365566E71B230E2200D92521 /* Main.storyboard */ = {
@@ -296,6 +228,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -311,7 +244,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -350,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -363,8 +296,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyVideoApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.rockvalleycollege.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -374,43 +308,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MyVideoApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.rockvalleycollege.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		365567011B230E2200D92521 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MyVideoAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyVideoApp.app/MyVideoApp";
-			};
-			name = Debug;
-		};
-		365567021B230E2200D92521 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MyVideoAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyVideoApp.app/MyVideoApp";
 			};
 			name = Release;
 		};
@@ -431,15 +332,6 @@
 			buildConfigurations = (
 				365566FE1B230E2200D92521 /* Debug */,
 				365566FF1B230E2200D92521 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		365567001B230E2200D92521 /* Build configuration list for PBXNativeTarget "MyVideoAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				365567011B230E2200D92521 /* Debug */,
-				365567021B230E2200D92521 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

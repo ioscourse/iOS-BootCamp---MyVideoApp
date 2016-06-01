@@ -2,23 +2,27 @@
 //  ViewController.swift
 //  MyVideoApp
 //
-//  Created by Charles Konkol on 2015-06-06.
+//  Created by Charles Konkol on 2016-05-06.
 //  Copyright (c) 2015 Rock Valley College. All rights reserved.
 //
 
 import UIKit
 //1) Imports
-import MediaPlayer
 import MobileCoreServices
 import AVFoundation
 import CoreData
 import CoreMedia
+import AVKit
+
+
 
 //2 Add to ViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
  
-//3 Add variables
-    var moviePlayer: MPMoviePlayerController = MPMoviePlayerController()
+    //3 Add variables
+    //var moviePlayer: MPMoviePlayerController = MPMoviePlayerController()
+    var moviePlayer:AVPlayerViewController = AVPlayerViewController()
+    
     var vidlink:String!
 
 //4) Add variable contactdb (used from UITableView
@@ -40,7 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Code for func
         if txtName.text == ""
         {
-            var alert = UIAlertController(title: "Name Required", message: "Please add name for video", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Name Required", message: "Please add name for video", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -66,26 +70,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // Create a new device
             let entityDescription =
             NSEntityDescription.entityForName("Video",
-                inManagedObjectContext: managedObjectContext!)
+                inManagedObjectContext: managedObjectContext)
             
             let photod = Video(entity: entityDescription!,
                 insertIntoManagedObjectContext: managedObjectContext)
             
-            photod.name = txtName.text
-            photod.datestamp = txtDate.text
-            println("asdadadad: " + vidlink)
+            photod.name = txtName.text!
+            photod.datestamp = txtDate.text!
+            print("asdadadad: " + vidlink)
             photod.link = vidlink
         }
-        var error: NSError?
-        managedObjectContext?.save(&error)
-        
-        if let err = error {
-            // status.text = err.localizedFailureReason
-        } else {
+     //   var error: NSError?
+        do {
+            try managedObjectContext.save()
             self.dismissViewControllerAnimated(false, completion: nil)
-            
+        } catch let error1 as NSError {
+            print(error1)
         }
-
+        
         
     }
     
@@ -97,13 +99,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Code for func
         let movieURL = NSURL.fileURLWithPath(vidlink!)
         
-        moviePlayer = MPMoviePlayerController(contentURL: movieURL)
-       
-        moviePlayer.controlStyle = MPMovieControlStyle.Embedded
-        moviePlayer.scalingMode = .Fill
-        self.view.addSubview(moviePlayer.view)
-        moviePlayer.setFullscreen(true, animated: true)
-        moviePlayer.play()
+        let player = AVPlayer(URL:movieURL)
+        
+      // moviePlayer.player = player
+      // moviePlayer.controlStyle = MPMovieControlStyle.Embedded
+       // moviePlayer.scalingMode = .Fill
+       // self.view.addSubview(moviePlayer.view)
+        //moviePlayer.setFullscreen(true, animated: true)
+        //player.play()
+        
+        
+       // let player = AVPlayer(URL: movieURL)
+        let playerController = AVPlayerViewController()
+        
+        playerController.player = player
+        self.addChildViewController(playerController)
+        self.view.addSubview(playerController.view)
+        playerController.view.frame = self.view.frame
+        
+        player.play()
         
     }
 
@@ -127,15 +141,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 //11 Code to check if record selected
         if (videodb != nil) {
             //Code for func
-            txtName.text = videodb.valueForKey("name") as! String
-            txtDate.text = videodb.valueForKey("datestamp") as! String
-                 println(videodb.valueForKey("datestamp") as! String)
-            let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first as! NSURL
+            txtName.text = videodb.valueForKey("name") as? String
+            txtDate.text = videodb.valueForKey("datestamp") as? String
+                 print(videodb.valueForKey("datestamp") as! String)
             vidlink =  videodb.valueForKey("link") as! String
-            println("vidlink: " + vidlink)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayerDidFinishPlaying:" , name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer)
-            
-            btnSave.enabled = false
+    
+            self.btnSave.title = "Update"
+            btnSave.enabled = true
             
             btnRecord.hidden=true
             
@@ -146,7 +158,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             formatter.timeStyle = .ShortStyle
             formatter.dateStyle = .ShortStyle
             formatter.stringFromDate(date)
-            println(formatter.stringFromDate(date))
+            print(formatter.stringFromDate(date))
             txtDate.text = formatter.stringFromDate(date)
             txtName.becomeFirstResponder()
             btnPlay.hidden=true
@@ -156,7 +168,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    func playerDidFinishPlaying(note: NSNotification) {
+        print("Video Finished")
+    }
+    
 //12 Record Function
+    
+    
     
     func RecordVideo()
     {
@@ -164,15 +182,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
             
             
-            println("captureVideoPressed and camera available.")
+            print("captureVideoPressed and camera available.")
           
             
-            var imagePicker = UIImagePickerController()
+            let imagePicker = UIImagePickerController()
             
             
             imagePicker.delegate = self
             imagePicker.sourceType = .Camera;
-            imagePicker.mediaTypes = [kUTTypeMovie!]
+            imagePicker.mediaTypes = [kUTTypeMovie as String]
             
             imagePicker.allowsEditing = false
             
@@ -184,7 +202,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
             
         else {
-            println("Camera not available.")
+            print("Camera not available.")
         }
         
     }
@@ -196,29 +214,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
 //13 ImagePicker finish recording
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
        //Code for func
         //Random #
         let myVar: Int = Int(rand())
 //        var strVar = String(myVar)
         
         let tempImage = info[UIImagePickerControllerMediaURL] as! NSURL!
-        let fileManager = NSFileManager.defaultManager()
+//        let fileManager = NSFileManager.defaultManager()
         
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
         
         
-        var name = txtName.text + "\(myVar)" + ".MOV"
+        let name = txtName.text! + "\(myVar)" + ".MOV"
         
-        var filePathToWrite = "\(paths)/\(name)"
-        var MovieData:NSData = NSData(contentsOfURL: tempImage)!
+        let filePathToWrite = "\(paths)/\(name)"
+        let MovieData:NSData = NSData(contentsOfURL: tempImage)!
         MovieData.writeToFile(filePathToWrite, atomically: true)
         
         let pathString = tempImage.relativePath
         vidlink = filePathToWrite
-        println("Video Save Link: " + vidlink)
+        print("Video Save Link: " + vidlink)
         
-         UISaveVideoAtPathToSavedPhotosAlbum(pathString, self, nil, nil)
+         UISaveVideoAtPathToSavedPhotosAlbum(pathString!, self, nil, nil)
          btnSave.enabled = true
         self.dismissViewControllerAnimated(true, completion: {})
         
@@ -232,18 +250,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func videoEditorControllerDidCancel(editor: UIVideoEditorController) {
-        println("User cancelled")
+        print("User cancelled")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     func videoEditorController(editor: UIVideoEditorController, didSaveEditedVideoToPath editedVideoPath: String) {
-        println("editedVideoPath: " + editedVideoPath)
+        print("editedVideoPath: " + editedVideoPath)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func videoEditorController(editor: UIVideoEditorController, didFailWithError error: NSError) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
+    
 
 
 }

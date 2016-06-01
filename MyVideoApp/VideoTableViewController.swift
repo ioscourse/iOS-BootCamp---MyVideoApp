@@ -49,24 +49,28 @@ class VideoTableViewController: UITableViewController {
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
         
-        let managedContext = appDelegate.managedObjectContext!
+        let managedContext = appDelegate.managedObjectContext
         
         
         let fetchRequest = NSFetchRequest(entityName:"Video")
         
         
-        var error: NSError?
         
-        let fetchedResults =
-        managedContext.executeFetchRequest(fetchRequest,
-            error: &error) as! [NSManagedObject]?
         
-        if let results = fetchedResults {
-            photoArray = results
-            tableView.reloadData()
-        } else {
-            println("Could not fetch \(error), \(error!.userInfo)")
+        //return contactArray.count
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            if let results = fetchedResults {
+                photoArray = results
+                tableView.reloadData()
+            } else {
+                print("Could not fetch")
+            }
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription),\(error.userInfo)")
         }
+
         
     }
 
@@ -97,9 +101,8 @@ class VideoTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //8) Uncomment & Change to below to load rows
         let cell =
-        tableView.dequeueReusableCellWithIdentifier("Cell")
-            as! UITableViewCell
-        
+            tableView.dequeueReusableCellWithIdentifier("Cell")
+                as UITableViewCell!
         let person = photoArray[indexPath.row]
         cell.textLabel?.text = person.valueForKey("name") as! String?
         
@@ -109,7 +112,7 @@ class VideoTableViewController: UITableViewController {
     //9) Add to show row clicked
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        println("You selected cell #\(indexPath.row)")
+        print("You selected cell #\(indexPath.row)")
     }
 
     
@@ -127,16 +130,16 @@ class VideoTableViewController: UITableViewController {
         if editingStyle == .Delete {
             let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
-            let context = appDelegate.managedObjectContext!
+            let context = appDelegate.managedObjectContext
             context.deleteObject(photoArray[indexPath.row])
             var error: NSError? = nil
-            if !context.save(&error) {
-                println("Unresolved error \(error)")
-                abort()
-            }
-            else
-            {
+            do {
+                try context.save()
                 loaddb()
+            } catch let error1 as NSError {
+                error = error1
+                print("Unresolved error \(error)")
+                abort()
             }
         }
 
@@ -170,7 +173,7 @@ class VideoTableViewController: UITableViewController {
         if segue.identifier == "video" {
             if let destination = segue.destinationViewController as?
                 ViewController {
-                    if let SelectIndex = tableView.indexPathForSelectedRow()?.row {
+                    if let SelectIndex = tableView.indexPathForSelectedRow?.row {
                         
                         let selectedDevice:NSManagedObject = photoArray[SelectIndex] as NSManagedObject
                         destination.videodb = selectedDevice
