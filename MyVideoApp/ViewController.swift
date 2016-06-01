@@ -3,7 +3,7 @@
 //  MyVideoApp
 //
 //  Created by Charles Konkol on 2016-05-06.
-//  Copyright (c) 2015 Rock Valley College. All rights reserved.
+//  Copyright (c) 2016 Rock Valley College. All rights reserved.
 //
 
 import UIKit
@@ -19,8 +19,7 @@ import AVKit
 //2 Add to ViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
  
-    //3 Add variables
-    //var moviePlayer: MPMoviePlayerController = MPMoviePlayerController()
+//3 Add variables
     var moviePlayer:AVPlayerViewController = AVPlayerViewController()
     
     var vidlink:String!
@@ -41,7 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnRecord: UIButton!
     
     @IBAction func btnRecord(sender: AnyObject) {
-        //Code for func
+        //Code for func btnRecord
         if txtName.text == ""
         {
             let alert = UIAlertController(title: "Name Required", message: "Please add name for video", preferredStyle: UIAlertControllerStyle.Alert)
@@ -61,7 +60,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnSave: UIBarButtonItem!
 
     @IBAction func btnSave(sender: AnyObject) {
-        //Code for func
+        //Code for func btnSave
         if (videodb != nil) {
             // Update existing device
             videodb.setValue(txtName.text, forKey: "name")
@@ -96,20 +95,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnPlay: UIButton!
     
     @IBAction func btnPlay(sender: AnyObject) {
-        //Code for func
+//9 Code for func btnPlay
         let movieURL = NSURL.fileURLWithPath(vidlink!)
         
         let player = AVPlayer(URL:movieURL)
         
-      // moviePlayer.player = player
-      // moviePlayer.controlStyle = MPMovieControlStyle.Embedded
-       // moviePlayer.scalingMode = .Fill
-       // self.view.addSubview(moviePlayer.view)
-        //moviePlayer.setFullscreen(true, animated: true)
-        //player.play()
-        
-        
-       // let player = AVPlayer(URL: movieURL)
         let playerController = AVPlayerViewController()
         
         playerController.player = player
@@ -121,14 +111,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
 
-//9  Create Outlet for txtName
+//10  Create Outlet for txtName
     @IBOutlet weak var txtName: UITextField!
     
-//10  Create Outlet for txtDate
+//11  Create Outlet for txtDate
     
     @IBOutlet weak var txtDate: UITextField!
     
-//10  Create Action for btnBack
+//12  Create Action for btnBack
     @IBAction func btnBack(sender: AnyObject) {
         //Code for func
          self.dismissViewControllerAnimated(false, completion: nil)
@@ -138,7 +128,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//11 Code to check if record selected
+//12 Code to check if record selected
         if (videodb != nil) {
             //Code for func
             txtName.text = videodb.valueForKey("name") as? String
@@ -172,7 +162,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         print("Video Finished")
     }
     
-//12 Record Function
+//13 Record Function
     
     
     
@@ -213,7 +203,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
 
-//13 ImagePicker finish recording
+//14 ImagePicker finish recording
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
        //Code for func
         //Random #
@@ -244,7 +234,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-//14 Functions to complete recording
+//15 Functions to complete recording
     func moviePlayerDidFinishPlaying(notification: NSNotification) {
          self.dismissViewControllerAnimated(true, completion: nil)
     }

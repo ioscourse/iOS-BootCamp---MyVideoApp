@@ -2,8 +2,8 @@
 //  MainViewController.swift
 //  MyVideoApp
 //
-//  Created by Charles Konkol on 2015-06-08.
-//  Copyright (c) 2015 Rock Valley College. All rights reserved.
+//  Created by Charles Konkol on 2016-05-06.
+//  Copyright (c) 2016 Rock Valley College. All rights reserved.
 //
 
 import UIKit

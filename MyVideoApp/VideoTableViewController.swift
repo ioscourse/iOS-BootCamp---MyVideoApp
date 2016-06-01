@@ -2,8 +2,8 @@
 //  VideoTableViewController.swift
 //  MyVideoApp
 //
-//  Created by Charles Konkol on 2015-06-06.
-//  Copyright (c) 2015 Rock Valley College. All rights reserved.
+//  Created by Charles Konkol on 2016-05-06.
+//  Copyright (c) 2016 Rock Valley College. All rights reserved.
 //
 
 import UIKit
@@ -164,17 +164,16 @@ class VideoTableViewController: UITableViewController {
    
     // MARK: - Navigation
 
-   //11) Uncomment & Change to go to proper record on proper Viewcontroller
+   //11) Uncomment override func prepareForSegue & Change to go to proper record on proper Viewcontroller
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
+        // Get the new view controller using [segue ViewController].
         // Pass the selected object to the new view controller.
         if segue.identifier == "video" {
             if let destination = segue.destinationViewController as?
                 ViewController {
                     if let SelectIndex = tableView.indexPathForSelectedRow?.row {
-                        
                         let selectedDevice:NSManagedObject = photoArray[SelectIndex] as NSManagedObject
                         destination.videodb = selectedDevice
                     }

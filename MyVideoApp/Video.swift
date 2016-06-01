@@ -3,7 +3,7 @@
 //  
 //
 //  Created by Charles Konkol on 2016-05-06.
-//  Copyright (c) 2015 Rock Valley College. All rights reserved.
+//  Copyright (c) 2016 Rock Valley College. All rights reserved.
 //
 
 import Foundation
